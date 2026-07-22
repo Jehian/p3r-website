@@ -1,0 +1,179 @@
+/* Persona 3 Reload Activity Bar Style Music UI */
+@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,600;0,700;1,700&family=Bebas+Neue&display=swap');
+
+.p3-music-container {
+  position: fixed;
+  bottom: 22px;
+  right: 24px;
+  z-index: 9999;
+  user-select: none;
+}
+
+.p3-p3-bar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 340px;
+  height: 58px;
+  background: rgba(14, 22, 38, 0.95);
+  border: none;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5), inset 0 0 0 1px rgba(255, 255, 255, 0.15);
+  cursor: pointer;
+  transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1), background 0.22s ease, box-shadow 0.22s ease;
+  overflow: visible;
+}
+
+.p3-p3-bar:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.65), inset 0 0 0 1px rgba(60, 226, 255, 0.4);
+}
+
+.p3-p3-bar.muted {
+  background: rgba(42, 12, 20, 0.94);
+}
+
+/* Left skewed icon block */
+.p3-bar-left-icon {
+  position: relative;
+  height: 100%;
+  width: 62px;
+  flex-shrink: 0;
+  background: #0f2c4a;
+  clip-path: polygon(0 0, 100% 0, 70% 100%, 0 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-right: 8px;
+  color: #3ce2ff;
+  transition: background 0.22s ease, color 0.22s ease;
+}
+
+.p3-p3-bar.muted .p3-bar-left-icon {
+  background: #6e0c18;
+  color: #ff8888;
+}
+
+.p3-icon-sun, .p3-icon-moon {
+  width: 24px;
+  height: 24px;
+}
+
+/* Main center content */
+.p3-bar-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 6px;
+  padding-right: 8px;
+  overflow: hidden;
+}
+
+/* Continuous Carousel Marquee Title Scrolling */
+.p3-bar-title-wrap {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  white-space: nowrap;
+}
+
+.p3-bar-title-scroll {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  animation: p3-title-marquee 8s linear infinite;
+  font-family: 'Barlow', 'Segoe UI', system-ui, sans-serif;
+  font-style: italic;
+  font-size: 21px;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.1;
+  letter-spacing: 1.2px;
+}
+
+.p3-title-gap {
+  font-size: 11px;
+  color: #3ce2ff;
+  opacity: 0.7;
+}
+
+@keyframes p3-title-marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.p3-bar-sub {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.p3-pill-badge {
+  background: #ffffff;
+  color: #050a18;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 14px;
+  line-height: 1.2;
+  padding: 0 7px;
+  border-radius: 4px;
+  letter-spacing: 1px;
+}
+
+.p3-sub-text {
+  font-family: 'Barlow', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: #3ce2ff;
+  letter-spacing: 1.5px;
+}
+
+.p3-p3-bar.muted .p3-sub-text {
+  color: #ff8888;
+}
+
+/* Right equalizer controls */
+.p3-bar-controls {
+  display: flex;
+  align-items: center;
+  padding-right: 14px;
+  flex-shrink: 0;
+}
+
+.p3-music-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 16px;
+}
+
+.p3-music-bars .bar {
+  width: 3px;
+  height: 4px;
+  background: #3ce2ff;
+  border-radius: 1px;
+  transition: height 0.2s ease, background 0.2s ease;
+}
+
+.p3-p3-bar.muted .p3-music-bars .bar {
+  background: #ff4d4d;
+  height: 3px !important;
+}
+
+.p3-music-bars .bar.animating:nth-child(1) {
+  animation: p3-bounce 0.7s infinite alternate ease-in-out;
+}
+.p3-music-bars .bar.animating:nth-child(2) {
+  animation: p3-bounce 0.9s infinite alternate ease-in-out 0.2s;
+}
+.p3-music-bars .bar.animating:nth-child(3) {
+  animation: p3-bounce 0.6s infinite alternate ease-in-out 0.4s;
+}
+.p3-music-bars .bar.animating:nth-child(4) {
+  animation: p3-bounce 0.8s infinite alternate ease-in-out 0.1s;
+}
+
+@keyframes p3-bounce {
+  0% { height: 3px; }
+  100% { height: 16px; }
+}
