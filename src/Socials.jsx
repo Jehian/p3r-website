@@ -130,7 +130,7 @@ export default function Socials() {
           width: 60vw;
           min-width: 600px;
           height: 64px;
-          transition: height 0.3s cubic-bezier(0.22,1,0.36,1);
+          transition: height 0.22s cubic-bezier(0.16, 1, 0.3, 1);
           background: #111;
           cursor: pointer !important;
           pointer-events: auto !important;
@@ -146,7 +146,7 @@ export default function Socials() {
           width: 60vw;
           min-width: 600px;
           transform: translateX(-100%);
-          transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+          transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
           pointer-events: auto !important;
           cursor: pointer !important;
         }
@@ -155,10 +155,10 @@ export default function Socials() {
         }
         .sc-bar-outer.active .sc-bar     { height: 90px; }
         .sc-bar-outer.active .sc-bar-red { height: 90px; }
-        .sc-bar-outer.mounted { transform: translateX(0); }
-        .sc-bar-outer:nth-child(1) { transition-delay: 0ms; }
-        .sc-bar-outer:nth-child(2) { transition-delay: 80ms; }
-        .sc-bar-outer:nth-child(3) { transition-delay: 160ms; }
+        .sc-bar-outer.mounted { transform: translateX(0); transition-delay: 0ms !important; }
+        .sc-bar-outer:not(.mounted):nth-child(1) { transition-delay: 0ms; }
+        .sc-bar-outer:not(.mounted):nth-child(2) { transition-delay: 80ms; }
+        .sc-bar-outer:not(.mounted):nth-child(3) { transition-delay: 160ms; }
 
         /* red underlay — peeks out below the bar when active */
         .sc-bar-red {
@@ -170,7 +170,7 @@ export default function Socials() {
           clip-path: polygon(50% 0, 100% 0, 100% 100%, calc(50% - 10px) 100%);
           transform: translateY(-7px);
           opacity: 0;
-          transition: opacity 0.2s ease;
+          transition: opacity 0.18s ease, height 0.22s cubic-bezier(0.16, 1, 0.3, 1);
           z-index: 0;
           pointer-events: none !important;
         }
@@ -183,7 +183,7 @@ export default function Socials() {
           width: 100%;
           background: #ffffff;
           clip-path: polygon(100% 0, 100% 0, calc(100% - 32px) 100%, calc(100% - 32px) 100%);
-          transition: clip-path 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+          transition: clip-path 0.25s cubic-bezier(0.16, 1, 0.3, 1);
           z-index: 0;
           pointer-events: none !important;
         }
@@ -392,7 +392,7 @@ export default function Socials() {
         .sc-right-nav {
           position: fixed;
           top: 40px;
-          right: 40px;
+          right: 180px;
           display: flex;
           align-items: center;
           gap: 6px;
@@ -542,12 +542,127 @@ export default function Socials() {
           font-size: 13px; letter-spacing: 2px;
           color: rgba(255,255,255,0.22);
         }
-        .sc-footer-key {
-          border: 1px solid rgba(255,255,255,0.15);
-          border-radius: 3px;
-          padding: 1px 6px; font-size: 11px;
+        .p3-back-btn {
+          position: fixed;
+          top: 24px;
+          right: 24px;
+          z-index: 100;
+          display: flex;
+          align-items: center;
+          gap: 6px;
+          background: rgba(17, 17, 17, 0.9);
+          border: 2px solid #c4001a;
+          color: #ffffff;
+          font-family: 'Bebas Neue', sans-serif;
+          font-size: 22px;
+          letter-spacing: 2px;
+          padding: 6px 18px;
+          clip-path: polygon(10px 0, 100% 0, calc(100% - 10px) 100%, 0 100%);
+          cursor: pointer;
+          box-shadow: 0 4px 14px rgba(0,0,0,0.6);
+          transition: all 0.22s ease;
+          pointer-events: auto;
+        }
+        .p3-back-btn:hover {
+          background: #c4001a;
+          border-color: #ffffff;
+          color: #ffffff;
+          transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+          .p3-back-btn {
+            top: 12px;
+            right: 12px;
+            font-size: 16px;
+            padding: 4px 12px;
+          }
+
+          .sc-bar, .sc-bar-outer {
+            width: 95vw;
+            min-width: unset;
+          }
+          .sc-bar-red {
+            width: 95vw;
+          }
+          .sc-bar {
+            height: 50px;
+          }
+          .sc-bar-outer.active .sc-bar,
+          .sc-bar-outer.active .sc-bar-red {
+            height: 65px;
+          }
+          .sc-bar-red {
+            height: 50px;
+          }
+
+          .sc-role {
+            font-size: 28px;
+            padding: 0 8px 0 4px;
+          }
+
+          .sc-label {
+            font-size: 18px;
+            letter-spacing: 2px;
+          }
+
+          .sc-char {
+            left: 60px;
+            max-width: 100px;
+          }
+
+          .sc-right-nav {
+            top: 14px;
+            left: 16px;
+            right: auto;
+          }
+          .sc-right-nav .sc-nav-btn {
+            display: none;
+          }
+          .sc-right-nav .sc-nav-label {
+            font-size: 22px;
+            color: #ffffff;
+          }
+
+          .sc-info-bar-wrap {
+            left: 50% !important;
+            transform: translateX(-50%);
+            width: 90vw;
+            right: auto;
+            height: 42px;
+          }
+          .sc-info-bar-new {
+            left: -15px;
+            height: 55%;
+          }
+          .sc-info-bar-text {
+            font-size: 15px;
+            padding: 0 8px;
+          }
+          .sc-info-bar-box {
+            font-size: 13px;
+            padding: 0 6px;
+          }
+          .sc-info-bar-count {
+            font-size: 15px;
+            margin-right: 12px;
+          }
+
+          .sc-footer {
+            display: none;
+          }
         }
       `}</style>
+
+      <button
+        className="p3-back-btn"
+        onClick={() => {
+          playSfx("deck_ui_out_of_game_detail");
+          navigate(-1);
+        }}
+      >
+        <span>◄</span> BACK
+      </button>
 
       <div className="sc-root" role="navigation" style={{ pointerEvents: "all" }}>
         {ITEMS.map((item, i) => (

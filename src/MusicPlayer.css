@@ -177,3 +177,37 @@
   0% { height: 3px; }
   100% { height: 16px; }
 }
+
+@media (max-width: 768px) {
+  .p3-music-container {
+    bottom: 12px;
+    right: 12px;
+  }
+
+  .p3-p3-bar {
+    width: 250px;
+    height: 46px;
+  }
+
+  .p3-bar-left-icon {
+    width: 48px;
+  }
+
+  .p3-icon-sun, .p3-icon-moon {
+    width: 18px;
+    height: 18px;
+  }
+
+  .p3-bar-title-scroll {
+    font-size: 16px;
+  }
+
+  .p3-pill-badge {
+    font-size: 11px;
+    padding: 0 5px;
+  }
+
+  .p3-sub-text {
+    font-size: 11px;
+  }
+}

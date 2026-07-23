@@ -28,3 +28,9 @@ body {
   width: 100vw;
   height: 100vh;
 }
+
+@media (max-width: 768px) {
+  #menu-screen video {
+    object-position: 75% center;
+  }
+}

@@ -352,14 +352,156 @@ export default function ResumePage({ src }) {
           flex-direction: column;
           gap: 8px;
         }
-        .resume-detail-bullet {
-          font-family: 'Anton', sans-serif;
-          font-size: 19px;
-          line-height: 1.2;
+        .p3-back-btn {
+          position: fixed;
+          top: 24px;
+          right: 24px;
+          z-index: 100;
+          display: flex;
+          align-items: center;
+          gap: 6px;
+          background: rgba(17, 17, 17, 0.9);
+          border: 2px solid #c4001a;
           color: #ffffff;
+          font-family: 'Bebas Neue', sans-serif;
+          font-size: 22px;
+          letter-spacing: 2px;
+          padding: 6px 18px;
+          clip-path: polygon(10px 0, 100% 0, calc(100% - 10px) 100%, 0 100%);
+          cursor: pointer;
+          box-shadow: 0 4px 14px rgba(0,0,0,0.6);
+          transition: all 0.22s ease;
+          pointer-events: auto;
+        }
+        .p3-back-btn:hover {
+          background: #c4001a;
+          border-color: #ffffff;
+          color: #ffffff;
+          transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+          .p3-back-btn {
+            top: 12px;
+            right: 12px;
+            font-size: 16px;
+            padding: 4px 12px;
+          }
+
+          .resume-stack {
+            position: relative;
+            top: 4vh;
+            left: 50%;
+            transform: translateX(-50%) scale(1);
+            width: 90vw;
+          }
+
+          .resume-list-tag {
+            font-size: 42px;
+            margin: 0 0 2px 8px;
+          }
+
+          .resume-card {
+            height: 68px;
+          }
+
+          .resume-card-inner {
+            padding: 6px 12px 6px 44px;
+          }
+
+          .resume-badge {
+            width: 36px;
+            height: 44px;
+            top: 6px;
+            left: -4px;
+          }
+          .resume-badge-text {
+            font-size: 22px;
+          }
+
+          .resume-title {
+            font-size: 28px;
+          }
+
+          .resume-rank-label {
+            font-size: 16px;
+          }
+          .resume-rank-number {
+            font-size: 36px;
+          }
+
+          .resume-subtitle-bar {
+            left: 44px;
+            height: 22px;
+            bottom: 4px;
+          }
+          .resume-subtitle {
+            font-size: 16px;
+          }
+
+          .resume-detail-panel {
+            position: relative;
+            top: 3vh;
+            left: 50%;
+            transform: translateX(-50%);
+            right: auto;
+            width: 90vw;
+            min-height: auto;
+            margin-top: 12px;
+            padding: 14px 16px;
+          }
+
+          .resume-detail-top {
+            grid-template-columns: 40px 1fr auto;
+            min-height: 56px;
+            padding: 0 10px;
+            gap: 8px;
+          }
+          .resume-detail-top-index {
+            font-size: 28px;
+          }
+          .resume-detail-top-title {
+            font-size: 24px;
+          }
+          .resume-detail-top-progress {
+            font-size: 24px;
+          }
+
+          .resume-detail-row {
+            grid-template-columns: 32px 1fr auto;
+            min-height: 40px;
+            padding: 0 10px;
+            gap: 8px;
+          }
+          .resume-detail-row-index {
+            font-size: 18px;
+          }
+          .resume-detail-row-title {
+            font-size: 18px;
+          }
+          .resume-detail-status {
+            font-size: 16px;
+          }
+
+          .resume-detail-bottom-title {
+            font-size: 22px;
+          }
+          .resume-detail-bullet {
+            font-size: 16px;
+          }
         }
 
       `}</style>
+
+      <button
+        className="p3-back-btn"
+        onClick={() => {
+          playSfx("deck_ui_out_of_game_detail");
+          navigate(-1);
+        }}
+      >
+        <span>◄</span> BACK
+      </button>
 
       <div className="resume-overlay">
         <div className="resume-stack">

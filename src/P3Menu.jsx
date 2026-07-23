@@ -194,32 +194,74 @@ export default function P3Menu({ onNavigate }) {
           padding: 1px 6px; font-size: 11px;
         }
 
-        .p3-name-tag {
-          position: absolute;
-          top: 40px;
-          left: 210px;
-          z-index: 20;
+        .p3-handle-tag {
           font-family: 'Anton', sans-serif;
           font-style: italic;
-          font-size: 200px;
-          line-height: 1;
-          letter-spacing: 4px;
-          color: rgba(0, 0, 0, 0.88);
-          transform: rotate(90deg);
-          transform-origin: 0 0;
+          font-size: 82px;
+          letter-spacing: 2px;
+          line-height: 0.85;
+          color: #3ce2ff;
+          margin-bottom: 18px;
+          margin-left: -35px;
           user-select: none;
           pointer-events: none;
+          opacity: 0;
+          transform: translateX(36px) skewX(-14deg) skewY(-6deg) rotate(-4deg);
+          transition: opacity 0.38s ease, transform 0.38s cubic-bezier(0.22,1,0.36,1);
         }
-        .p3-name-gray {
-          color: #788291;
+        .p3-handle-tag.mounted {
+          transform: translateX(0) skewX(-14deg) skewY(-6deg) rotate(-4deg) !important;
+        }
+
+        @media (max-width: 768px) {
+          .p3-overlay {
+            align-items: center;
+            justify-content: flex-start;
+            padding-top: 18vh;
+          }
+
+          .p3-menu {
+            padding: 0;
+            width: 100vw;
+            align-items: center;
+            transform: scale(0.65);
+            transform-origin: top center;
+          }
+
+          .p3-row {
+            margin-right: 0 !important;
+          }
+
+          .p3-handle-tag {
+            font-size: 48px;
+            margin-bottom: 10px;
+            margin-left: -20px;
+            transform: translateX(36px) skewX(-14deg) skewY(-6deg) rotate(-4deg);
+          }
+          .p3-handle-tag.mounted {
+            transform: translateX(0) skewX(-14deg) skewY(-6deg) rotate(-4deg) !important;
+          }
+
+          .p3-hint {
+            display: none;
+          }
         }
       `}</style>
 
       <div className="p3-overlay">
-        <div className="p3-name-tag">
-          <span>ad</span><span className="p3-name-gray">me</span>
-        </div>
         <nav className="p3-menu">
+          {(() => {
+            const distFromAdme = active + 1;
+            const admeOpacity = Math.max(0.4, 1 - distFromAdme * 0.18);
+            return (
+              <div
+                className={`p3-handle-tag${mounted ? " mounted" : ""}`}
+                style={{ opacity: mounted ? admeOpacity : 0 }}
+              >
+                @adme
+              </div>
+            );
+          })()}
           {ITEMS.map((item, i) => {
             const isActive = active === i;
             const dist = Math.abs(i - active);
